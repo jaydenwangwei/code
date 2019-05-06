@@ -50,3 +50,4 @@ gradle/
 .DS_Store
 */.idea/
 .idea/
+*.gz
