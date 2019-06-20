@@ -1,19 +1,23 @@
 package com.source.mybatis;
 
-import com.source.mybatis.com.souces.beans.Dept;
-import org.apache.ibatis.io.Resources;
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+
+import com.source.mybatis.com.souces.beans.Dept;
+
 public class Application {
 	public static void main(String[] args) throws Exception {
-
+		float[][] f1 = { { 1.2f, 2.3f }, { 4.5f, 5.6f } };
+		Object oo = f1;
+		f1[1] = oo;
+		System.out.println("Best Wishes" + f1[1]);
 	}
 
 
@@ -44,13 +48,13 @@ public class Application {
 
 
 	private static void testMybatis() throws Exception {
-		Dept dept=new Dept();
+		Dept dept = new Dept();
 		dept.setdName("金融事业部");
 		dept.setLoc("重庆");
-		InputStream is= Resources.getResourceAsStream("mybatis-config.xml");
-		SqlSessionFactory factory=new SqlSessionFactoryBuilder().build(is);
-		SqlSession session=factory.openSession();
-		session.insert("insertDept",dept);
+		InputStream is = Resources.getResourceAsStream("mybatis-config.xml");
+		SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(is);
+		SqlSession session = factory.openSession();
+		session.insert("insertDept", dept);
 		session.commit();
 		session.close();
 	}
