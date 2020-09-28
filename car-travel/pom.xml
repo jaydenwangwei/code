@@ -16,6 +16,7 @@
         <module>common/car-travel-parent</module>
         <module>common/car-travel-util</module>
         <module>common/car-travel-mapreduce</module>
+        <module>common/car-travel-hdfs</module>
         <module>portal/car-travel-web</module>
     </modules>
 
