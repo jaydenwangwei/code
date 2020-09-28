@@ -39,6 +39,11 @@ captures/
 *.iml
 */*.iml
 
+# Eclipse
+*.project
+*.classpath
+build/
+
 # Keystore files
 #*.jks
 #gradle wrapper
@@ -51,3 +56,8 @@ gradle/
 */.idea/
 .idea/
 *.gz
+*.jar
+*/*.jar
+target/
+*/target/
+*/target/*

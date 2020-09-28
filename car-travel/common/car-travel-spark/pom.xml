@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>com.jayden</groupId>
+        <artifactId>car-travel-parent</artifactId>
+        <version>1.0-SNAPSHOT</version>
+        <relativePath>../car-travel-parent/pom.xml</relativePath>
+    </parent>
+    <artifactId>car-travel-spark</artifactId>
+    <packaging>jar</packaging>
+    <modelVersion>4.0.0</modelVersion>
+
+    <dependencies>
+        <!--依赖本项目中的module-->
+        <dependency>
+            <groupId>com.jayden</groupId>
+            <artifactId>car-travel-util</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <!--spark 离线任务核心依赖-->
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-core_${scala.binary.version}</artifactId>
+            <version>${spark.version}</version>
+        </dependency>
+
+        <!--spark 实时任务核心依赖-->
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-streaming_${scala.binary.version}</artifactId>
+            <version>${spark-streaming.version}</version>
+        </dependency>
+
+        <!--spark streaming 和kafka集成的依赖配置-->
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-streaming-kafka-0-10_${scala.binary.version}</artifactId>
+            <version>${spark-streaming.version}</version>
+        </dependency>
+
+    </dependencies>
+
+</project>
