@@ -23,7 +23,8 @@ public class Consumer extends ShutdownableThread {
     public Consumer(String topic, String groupId) {
         super("KafkaConsumerExample", false);
         Properties props = new Properties();
-        props.put("bootstrap.servers", "192.168.0.201:9092");
+        props.put("bootstrap.servers", "192.168.0.201:9092,192.168.0.202:9092,192.168.0.203:9092," +
+                "192.168.0.204:9092,192.168.0.205:9092");
         props.put("group.id", groupId);
         props.put("enable.auto.commit", "true");
         props.put("auto.offset.reset", "earliest");

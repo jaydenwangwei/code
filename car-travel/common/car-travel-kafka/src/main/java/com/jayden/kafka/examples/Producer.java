@@ -19,7 +19,8 @@ public class Producer extends Thread {
      */
     public Producer(String topic, Boolean isAsync) {
         Properties props = new Properties();
-        props.put("bootstrap.servers", "192.168.0.201:9092");
+        props.put("bootstrap.servers", "192.168.0.201:9092,192.168.0.202:9092,192.168.0.203:9092," +
+                "192.168.0.204:9092,192.168.0.205:9092");
         //props.put("acks", "all");
         //props.put("retries", 0);
         //props.put("batch.size", 16384);
