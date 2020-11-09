@@ -28,6 +28,11 @@
 
         <!--cloudera镜像-->
         <repository>
+            <id>cloudera_tmp</id>
+            <name>colud</name>
+            <url>https://repo.rdc.aliyun.com/repository/82963-release-FnoWLy/</url>
+        </repository>
+        <repository>
             <id>cloudera</id>
             <url>https://repository.cloudera.com/artifactory/cloudera-repos/</url>
         </repository>
