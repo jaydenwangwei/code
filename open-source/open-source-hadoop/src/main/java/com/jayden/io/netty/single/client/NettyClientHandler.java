@@ -28,6 +28,7 @@ public class NettyClientHandler extends ChannelInboundHandlerAdapter {
     @Override
     public synchronized void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         System.out.println("客户端收到的消息是: " + msg.toString());
+        ctx.close();
     }
 
     @Override
