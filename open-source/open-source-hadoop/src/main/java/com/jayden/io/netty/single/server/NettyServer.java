@@ -2,6 +2,7 @@ package com.jayden.io.netty.single.server;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
+import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelOption;
 import io.netty.channel.ChannelPipeline;
@@ -10,10 +11,15 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
+import sun.misc.Signal;
+
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author wangwei
  * @description 基于Netty的server的简易程序
+ * <p>
+ * 1、如何防止Netty意外退出
  */
 public class NettyServer {
     private static final int PORT = 9090;
@@ -66,15 +72,22 @@ public class NettyServer {
             ChannelFuture channelFuture = server.bind(hostname, port).sync();
             System.out.println("NettyServer已经启动成功");
 
-            // 12.优雅关闭服务
-            channelFuture.channel().closeFuture().sync();
+            // 12.优雅关闭服务和退出
+            channelFuture.channel().closeFuture().addListener(new ChannelFutureListener() {
+                @Override
+                public void operationComplete(ChannelFuture channelFuture) throws Exception {
+                    bossGroup.shutdownGracefully();
+                    workerGroup.shutdownGracefully();
+                }
+            }).sync();
 
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {
-            bossGroup.shutdownGracefully();
-            workerGroup.shutdownGracefully();
+            // bossGroup.shutdownGracefully();
+            // workerGroup.shutdownGracefully();
         }
+
     }
 
     public static void main(String[] args) {
