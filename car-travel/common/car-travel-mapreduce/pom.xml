@@ -12,7 +12,7 @@
 
     <artifactId>car-travel-mapreduce</artifactId>
     <properties>
-        <hadoop-version>2.2.0</hadoop-version>
+        <hadoop-version>2.10.1</hadoop-version>
     </properties>
     <dependencies>
         <dependency>
